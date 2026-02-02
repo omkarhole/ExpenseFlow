@@ -50,7 +50,7 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com","https://api.github.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com", "https://api.github.com"],
       scriptSrc: [
         "'self'",
         "'unsafe-inline'",
@@ -59,7 +59,7 @@ app.use(helmet({
         "https://api.github.com"
       ],
       scriptSrcAttr: ["'unsafe-inline'"],
-      imgSrc: ["'self'", "data:", "https:", "https://res.cloudinary.com","https://api.github.com"],
+      imgSrc: ["'self'", "data:", "https:", "https://res.cloudinary.com", "https://api.github.com"],
       connectSrc: [
         "'self'",
         "http://localhost:3000",
@@ -185,7 +185,7 @@ io.on('connection', (socket) => {
   socket.on('settlement_action', async (data) => {
     try {
       const { action, settlementId, groupId, paymentDetails, reason } = data;
-      
+
       switch (action) {
         case 'request':
           await settlementService.requestSettlement(settlementId, socket.userId, paymentDetails);
@@ -239,6 +239,7 @@ app.use('/api/currency', require('./routes/currency'));
 
 app.use('/api/user', protect, require('./routes/user'));
 app.use('/api/expenses', require('./middleware/rateLimiter').expenseLimiter, protect, expenseRoutes);
+app.use('/api/transactions', require('./middleware/rateLimiter').expenseLimiter, protect, require('./routes/transactions'));
 app.use('/api/sync', protect, syncRoutes);
 app.use('/api/rules', protect, require('./routes/rules'));
 app.use('/api/notifications', protect, require('./routes/notifications'));
