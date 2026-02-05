@@ -382,6 +382,6 @@ class CronJobs {
       console.error('Budget alert error:', error);
     }
   }
-$newMethods}
 }
+
 module.exports = CronJobs;

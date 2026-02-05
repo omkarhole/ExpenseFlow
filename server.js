@@ -19,6 +19,7 @@ const groupsRoutes = require('./routes/groups');
 const clientRoutes = require('./routes/clients');
 const invoiceRoutes = require('./routes/invoices');
 const paymentRoutes = require('./routes/payments');
+const timeEntryRoutes = require('./routes/time-entries');
 
 const app = express();
 const server = http.createServer(app);
@@ -167,6 +168,7 @@ app.use('/api/groups', require('./middleware/rateLimiter').expenseLimiter, group
 app.use('/api/clients', require('./middleware/rateLimiter').expenseLimiter, clientRoutes);
 app.use('/api/invoices', require('./middleware/rateLimiter').expenseLimiter, invoiceRoutes);
 app.use('/api/payments', require('./middleware/rateLimiter').expenseLimiter, paymentRoutes);
+app.use('/api/time-entries', require('./middleware/rateLimiter').expenseLimiter, timeEntryRoutes);
 
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
