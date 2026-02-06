@@ -253,8 +253,8 @@ app.use('/api/backups', backupRoutes); // Issue #462: Backup Management API
 app.use('/api/accounts', require('./routes/accounts'));
 app.use('/api/accounts', require('./routes/accounts'));
 app.use('/api/2fa', require('./middleware/auth'), twoFactorAuthRoutes); // Issue #503: 2FA Management
-app.use('/api/expenses', expenseRoutes);
-app.use('/api/transactions', expenseRoutes); // Alias for backward compatibility
+app.use('/api/receipts', require('./routes/receipts'));
+app.use('/api/folders', require('./routes/folders'));
 
 // Import error handling middleware
 const { errorHandler, notFoundHandler } = require('./middleware/errorMiddleware');
