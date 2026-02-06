@@ -6,7 +6,7 @@ const TrustedDevice = require('../models/TrustedDevice');
 const User = require('../models/User');
 const AuditLog = require('../models/AuditLog');
 const emailService = require('./emailService');
-const fp = require('fingerprint-generator');
+// const fp = require('fingerprint-generator');
 
 /**
  * 2FA Service
