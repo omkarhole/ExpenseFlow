@@ -9501,6 +9501,9 @@ input:checked + .toggle-slider::before {
     align-items: center;
     margin-bottom: 30px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .radial-stat {
